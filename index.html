@@ -2,53 +2,66 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>WildEvo Lobby</title>
+<title>WildEvo</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- TOP LEFT PLAYER INFO -->
-<div class="top-left">
-  <div>🇷🇺 WEST EUROPE 1 #1</div>
-  <div>Level: <span id="level">0</span></div>
+<!-- LOADING SCREEN -->
+<div id="loadingScreen">
+  <div class="logo">WILDEVO</div>
 
-  <div class="xp-bar">
-    <div id="xpFill"></div>
-    <span id="xpText">0/100</span>
+  <div class="bar">
+    <div id="fill"></div>
   </div>
+
+  <div id="percent">0%</div>
 </div>
 
-<!-- USERNAME -->
-<div class="username-box">
-  <input id="username" value="ELIOT">
-</div>
+<!-- LOBBY -->
+<div id="lobby" class="hidden">
 
-<!-- CENTER PLAY -->
-<div class="center">
-  <button onclick="playGame()">PLAY</button>
-</div>
+  <!-- TOP LEFT -->
+  <div class="top-left">
+    🇷🇺 WEST EUROPE 1 #1<br>
+    Level: <span id="level">0</span>
 
-<!-- MENU -->
-<div class="menu-left">
-  <button onclick="openTasks()">TASKS</button>
-</div>
+    <div class="xp-bar">
+      <div id="xpFill"></div>
+      <div id="xpText">0/100</div>
+    </div>
+  </div>
 
-<div class="menu-right">
-  <button>SHOP</button>
-  <button>LEADERBOARD</button>
-  <button>SETTINGS</button>
-</div>
+  <!-- USERNAME -->
+  <div class="username">
+    <input id="username" value="ELIOT">
+  </div>
 
-<!-- TASKS -->
-<div id="tasks" class="tasks hidden">
-  <h2>TASKS</h2>
+  <!-- PLAY -->
+  <div class="center">
+    <button onclick="alert('Game Start!')">PLAY</button>
+  </div>
 
-  <button onclick="completeTask(100, 15)">Evolve 15 times (+100 XP)</button>
-  <button onclick="completeTask(100, 5)">Eat 5 bread (+100 XP)</button>
-  <button onclick="completeTask(100000, 1)">Evolve to Ghost (+100000 XP)</button>
+  <!-- MENU -->
+  <div class="menu-right">
+    <button onclick="openTasks()">TASKS</button>
+    <button>SHOP</button>
+    <button>LEADERBOARD</button>
+    <button>SETTINGS</button>
+  </div>
 
-  <button onclick="closeTasks()">Close</button>
+  <!-- TASKS -->
+  <div id="tasks" class="tasks hidden">
+    <h2>TASKS</h2>
+
+    <button onclick="completeTask(100)">Evolve 15 times (+100 XP)</button>
+    <button onclick="completeTask(100)">Eat 5 bread (+100 XP)</button>
+    <button onclick="completeTask(100000)">Evolve to Ghost (+100000 XP)</button>
+
+    <button onclick="closeTasks()">CLOSE</button>
+  </div>
+
 </div>
 
 <script src="script.js"></script>
