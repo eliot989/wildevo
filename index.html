@@ -75,8 +75,16 @@
     
 let progress = 0;
 
+window.onload = function () {
+
 const fill = document.getElementById("fill");
 const percent = document.getElementById("percent");
+const lobby = document.getElementById("lobby");
+
+if (!fill || !percent || !lobby) {
+console.log("Missing elements!");
+return;
+}
 
 let loading = setInterval(() => {
 
@@ -85,22 +93,29 @@ progress++;
 fill.style.width = progress + "%";
 percent.innerHTML = progress + "%";
 
-if(progress >= 100){
+if (progress >= 100) {
 
 clearInterval(loading);
 
+// schimbă doar text
 percent.innerHTML = "PLAY";
 
-document.getElementById("loadingBar").onclick = function(){
+document.getElementById("loadingBar").onclick = function () {
 
+// ASCUNDE LOADING
 document.getElementById("loadingBar").style.display = "none";
 document.getElementById("background").style.display = "none";
 
-document.getElementById("lobby").style.display = "block";
+// ARATĂ LOBBY
+lobby.style.display = "block";
 
 };
 
 }
+
+}, 30);
+
+};
 </script>
  <div id="lobby" style="display:none;">
 
