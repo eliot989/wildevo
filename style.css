@@ -21,33 +21,46 @@ html,body{
 
 /* LOADING BAR */
 #loadingBar{
-    position:fixed !important;
-
-    left:50% !important;
-    top:50% !important;
-
-    transform:translate(-50%,-50%) !important;
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
 
     width:1000px;
     height:50px;
 
-    background:#111 !important;
-    border:3px solid #ff9800 !important;
+    background:#111;
+    border:3px solid #00ff66;
     border-radius:40px;
 
     overflow:hidden;
 
-    box-shadow:0 0 25px #ff8800;
+    box-shadow:
+        0 0 20px #00ff66,
+        0 0 50px #00ff66;
 
-    z-index:999999 !important;
+    z-index:9999;
 }
-/* FILL */
+
+/* FILL (GREEN GLOW) */
 #fill{
     width:0%;
     height:100%;
-    background:linear-gradient(90deg,#ff9900,#ff5500,#ff9900);
+
+    background:linear-gradient(
+        90deg,
+        #00ff66,
+        #00cc55,
+        #00ff66
+    );
+
     background-size:300% 100%;
     animation:glow 1s linear infinite;
+}
+
+@keyframes glow{
+    0%{background-position:0%;}
+    100%{background-position:300%;}
 }
 
 /* TEXT */
@@ -56,16 +69,8 @@ html,body{
     left:50%;
     top:50%;
     transform:translate(-50%,-50%);
-
     color:white;
     font-size:22px;
     font-weight:bold;
-
-    z-index:10;
-}
-
-/* ANIMATION */
-@keyframes glow{
-    0%{background-position:0%;}
-    100%{background-position:300%;}
+    text-shadow:0 0 10px black;
 }
