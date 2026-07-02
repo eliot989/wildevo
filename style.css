@@ -30,20 +30,19 @@ html,body{
     position:fixed;
 
     left:50%;
-    top:64%;
+    top:72%;
 
     transform:translate(-50%,-50%);
 
-    width:980px;
-    height:42px;
+    width:1100px;
+    max-width:85vw;
+
+    height:44px;
 
     background:#222;
-
-    border-radius:40px;
-
-    overflow:hidden;
-
     border:3px solid #ff8c00;
+    border-radius:40px;
+    overflow:hidden;
 
     box-shadow:
         0 0 20px #ff8800,
@@ -84,7 +83,7 @@ html,body{
     position:absolute;
 
     left:50%;
-    top:30%;
+    top:70%;
 
     transform:translate(-50%,-50%);
 
