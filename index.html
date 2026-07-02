@@ -8,59 +8,29 @@
 
 <body>
 
-<!-- LOADING -->
-<div id="loading">
-  <div class="logo">WILDEVO</div>
+<!-- LOADING SCREEN -->
+<div id="loadingScreen">
+    <div class="logo">WILDEVO</div>
 
-  <div class="bar">
-    <div id="fill"></div>
-  </div>
+    <div class="bar">
+        <div id="fill"></div>
+        <div id="percent">0%</div>
+    </div>
 
-  <div id="percent">0%</div>
+    <button id="playBtn" class="hidden" onclick="enterLobby()">PLAY</button>
 </div>
 
 <!-- LOBBY -->
 <div id="lobby" class="hidden">
 
-  <div class="top">
-    🇷🇺 WEST EUROPE 1 #1
-    <br>
-    Level: <span id="level">0</span>
-
-    <div class="xp-bar">
-      <div id="xpFill"></div>
-      <div id="xpText">0/100</div>
+    <div class="topLeft">
+        🇷🇺 WEST EUROPE 1 #1 <br>
+        Level: <span id="level">0</span>
     </div>
-  </div>
 
-  <!-- USERNAME -->
-  <div class="username">
-    <input id="username" value="ELIOT">
-  </div>
-
-  <!-- PLAY -->
-  <div class="center">
-    <button onclick="enterGame()">PLAY</button>
-  </div>
-
-  <!-- MENU -->
-  <div class="menu">
-    <button onclick="openTasks()">TASKS</button>
-    <button>SHOP</button>
-    <button>LEADERBOARD</button>
-    <button>SETTINGS</button>
-  </div>
-
-  <!-- TASKS -->
-  <div id="tasks" class="tasks hidden">
-    <h2>TASKS</h2>
-
-    <button onclick="addXP(100)">Evolve 15 times (+100 XP)</button>
-    <button onclick="addXP(100)">Eat 5 bread (+100 XP)</button>
-    <button onclick="addXP(100000)">Evolve Ghost (+100000 XP)</button>
-
-    <button onclick="closeTasks()">Close</button>
-  </div>
+    <div class="center">
+        <button onclick="alert('Game Start')">PLAY GAME</button>
+    </div>
 
 </div>
 
