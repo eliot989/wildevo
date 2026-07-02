@@ -20,66 +20,59 @@
 <button id="playBtn" style="display:none;">PLAY</button>
 
 <script>
+    
 let progress = 0;
+
+window.onload = function () {
 
 const fill = document.getElementById("fill");
 const percent = document.getElementById("percent");
-const playBtn = document.getElementById("playBtn");
 
-const loading = setInterval(function(){
+if (!fill || !percent) {
+console.log("ERROR: missing loading elements");
+return;
+}
 
-    progress++;
+let loading = setInterval(() => {
 
-    fill.style.width = progress + "%";
-    percent.innerHTML = progress + "%";
+progress++;
 
-   if(progress >= 100){
+fill.style.width = progress + "%";
+percent.innerHTML = progress + "%";
 
-    clearInterval(loading);
+if (progress >= 100) {
+
+clearInterval(loading);
 
 percent.innerHTML = "PLAY";
 
 document.getElementById("loadingBar").style.cursor = "pointer";
 
-document.getElementById("loadingBar").onclick = function(){
+document.getElementById("loadingBar").onclick = function () {
 
-    document.getElementById("loadingBar").style.display = "none";
-    document.getElementById("background").style.display = "none";
+document.getElementById("loadingBar").style.display = "none";
+document.getElementById("background").style.display = "none";
 
-    document.body.innerHTML += `
-    
-    <div id="lobby">
+document.body.innerHTML += `
+<div id="lobby">
+<h1 style="color:white;text-align:center;margin-top:200px;">
+WILDEVO LOBBY
+</h1>
 
-        <div class="topLeft">
-            🇷🇺 WEST EUROPE 1 #1<br>
-            Level 0
-        </div>
-
-        <div class="xp">
-            <div class="xpFill"></div>
-            <div class="xpText">0/100</div>
-        </div>
-
-        <div class="username">
-            <input placeholder="USERNAME">
-        </div>
-
-        <div class="center">
-            <button onclick="alert('PLAY GAME')">PLAY</button>
-        </div>
-
-        <div class="rightMenu">
-            <button>SHOP</button>
-            <button>TASKS</button>
-            <button>SETTINGS</button>
-        </div>
-
-    </div>
-
-    `;
+<div style="text-align:center;">
+<button onclick="alert('PLAY GAME')" style="padding:20px 40px;background:lime;">
+PLAY
+</button>
+</div>
+</div>
+`;
 };
-       
-},50);
+
+}
+
+}, 30);
+
+};
 
 </script>
     
