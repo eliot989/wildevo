@@ -1,13 +1,22 @@
 body {
 margin: 0;
-font-family: Arial;
 background: black;
-color: white;
+font-family: Arial;
 overflow: hidden;
+color: white;
+}
+
+/* BACKGROUND IMAGE */
+.bg {
+position: absolute;
+width: 100%;
+height: 100%;
+object-fit: cover;
+z-index: -1;
 }
 
 /* LOADING */
-#loadingScreen {
+#loading {
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -15,27 +24,22 @@ align-items: center;
 height: 100vh;
 }
 
-.logo {
-font-size: 40px;
-margin-bottom: 20px;
-}
-
 /* BAR */
 .bar {
 width: 300px;
 height: 25px;
-background: #222;
+background: rgba(0,0,0,0.6);
 border-radius: 10px;
-position: relative;
 overflow: hidden;
 box-shadow: 0 0 20px lime;
+position: relative;
 }
 
 #fill {
 height: 100%;
 width: 0%;
 background: lime;
-box-shadow: 0 0 15px lime;
+box-shadow: 0 0 20px lime;
 transition: 0.2s;
 }
 
@@ -44,45 +48,29 @@ position: absolute;
 width: 100%;
 text-align: center;
 top: 3px;
-font-size: 14px;
 }
 
 /* PLAY BUTTON */
 #playBtn {
 margin-top: 20px;
-padding: 10px 30px;
+padding: 10px 40px;
 font-size: 20px;
 background: lime;
 border: none;
 cursor: pointer;
+display: none;
 box-shadow: 0 0 20px lime;
 }
 
+/* LOBBY */
 .hidden {
 display: none;
 }
 
-/* LOBBY */
 #lobby {
 height: 100vh;
 display: flex;
 justify-content: center;
 align-items: center;
-}
-
-.topLeft {
-position: absolute;
-top: 10px;
-left: 10px;
-background: rgba(0,0,0,0.5);
-padding: 10px;
-border-radius: 10px;
-}
-
-.center button {
-padding: 20px 50px;
-font-size: 30px;
-background: lime;
-border: none;
-cursor: pointer;
+background: #0b0f14;
 }
