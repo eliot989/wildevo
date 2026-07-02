@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WildEvo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WildEvo</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
@@ -18,64 +19,29 @@
 
 <script>
 
-let percent = 0;
+let progress = 0;
 
 const fill = document.getElementById("fill");
-const text = document.getElementById("percent");
-const bar = document.getElementById("loadingBar");
+const percent = document.getElementById("percent");
 
 const loading = setInterval(function(){
 
-    percent++;
+    progress++;
 
-    fill.style.width = percent + "%";
-    text.innerHTML = percent + "%";
+    fill.style.width = progress + "%";
+    percent.innerHTML = progress + "%";
 
-    if(percent >= 100){
+    if(progress >= 100){
 
         clearInterval(loading);
 
-        text.innerHTML = "PLAY";
+        percent.innerHTML = "PLAY";
 
-        bar.style.cursor = "pointer";
+        document.getElementById("loadingBar").style.cursor = "pointer";
 
-        bar.onclick = function(){
+        document.getElementById("loadingBar").onclick = function(){
 
-            document.body.innerHTML = `
-            <div style="
-            width:100vw;
-            height:100vh;
-            background:black;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            flex-direction:column;
-            color:white;
-            font-family:Arial;
-            ">
-
-            <h1 style="font-size:70px;color:#6aff00;">
-            WildEvo
-            </h1>
-
-            <h2>Game Coming Soon...</h2>
-
-            <button
-            style="
-            margin-top:30px;
-            width:220px;
-            height:60px;
-            font-size:24px;
-            background:#5cff00;
-            border:none;
-            border-radius:12px;
-            cursor:pointer;
-            ">
-            PLAY
-            </button>
-
-            </div>
-            `;
+            alert("Aici va începe jocul WildEvo!");
 
         };
 
