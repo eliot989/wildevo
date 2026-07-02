@@ -16,13 +16,15 @@
     <div id="fill"></div>
     <div id="percent">0%</div>
 </div>
+    
+<button id="playBtn" style="display:none;">PLAY</button>
 
 <script>
-
 let progress = 0;
 
 const fill = document.getElementById("fill");
 const percent = document.getElementById("percent");
+const playBtn = document.getElementById("playBtn");
 
 const loading = setInterval(function(){
 
@@ -35,16 +37,19 @@ const loading = setInterval(function(){
 
         clearInterval(loading);
 
-        percent.innerHTML = "PLAY";
+        percent.innerHTML = "READY";
 
-        document.getElementById("loadingBar").style.cursor = "pointer";
+        playBtn.style.display = "block";
 
-        document.getElementById("loadingBar").onclick = function(){
+        playBtn.onclick = function(){
+            document.getElementById("loadingBar").style.display = "none";
 
-            alert("Aici va începe jocul WildEvo!");
-
+            document.body.innerHTML += `
+                <div style="color:white;text-align:center;margin-top:200px;">
+                    <h1>WILDEVO LOBBY</h1>
+                </div>
+            `;
         };
-
     }
 
 },50);
