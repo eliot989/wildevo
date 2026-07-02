@@ -9,17 +9,21 @@ let load = setInterval(() => {
 
     fill.style.width = progress + "%";
 
+    // 🔵 procente
     if(progress < 60){
         text.innerHTML = progress + "%";
     }
 
+    // 🟡 connecting
     else if(progress < 100){
         text.innerHTML = "Connecting to server...";
     }
 
+    // 🟢 finish
     else{
         clearInterval(load);
         text.innerHTML = "Connected!";
+
         setTimeout(() => {
             window.location.href = "lobby.html";
         }, 800);
