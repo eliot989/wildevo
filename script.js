@@ -1,28 +1,25 @@
-console.log("SCRIPT RULEAZĂ");
-
 let progress = 0;
 
 const fill = document.getElementById("fill");
 const text = document.getElementById("text");
 
-let load = setInterval(() => {
+let interval = setInterval(() => {
 
     progress++;
 
     fill.style.width = progress + "%";
 
-    if(progress < 100){
-        text.innerHTML = progress + "%";
+    if(progress < 60){
+        text.innerHTML = "Connecting to server...";
+    }
+
+    if(progress >= 60 && progress < 100){
+        text.innerHTML = "Connected...";
     }
 
     if(progress >= 100){
-        clearInterval(load);
-
-        text.innerHTML = "PLAY";
-
-        document.getElementById("loadingBar").onclick = () => {
-            window.location.href = "lobby.html";
-        };
+        clearInterval(interval);
+        window.location.href = "lobby.html";
     }
 
-}, 25);
+}, 30);
