@@ -21,18 +21,28 @@ html,body{
 }
 
 #loadingBar{
-    position: fixed !important;
-    left: 50% !important;
-    top: 75% !important;
-    transform: translate(-50%, -50%) !important;
+    position:fixed;
 
-    width: 1000px !important;
-    height: 50px !important;
+    left:50%;
+    top:50%;
 
-    background: red !important;
-    z-index: 999999 !important;
+    transform:translate(-50%,-50%);
+
+    width:1000px;
+    height:48px;
+
+    background:#222;
+    border:3px solid #ff9800;
+    border-radius:40px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 0 20px #ff8800,
+        0 0 45px #ff5500;
+
+    z-index:9999;
 }
-
 #fill{
     width:0%;
     height:100%;
