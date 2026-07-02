@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +10,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:Arial;
 }
 
 body{
@@ -25,12 +26,12 @@ height:100%;
 background:url("assets/loading.png") center/cover no-repeat;
 }
 
-/* OVERLAY NEGRU (ca să arate mai cool textul) */
+/* OVERLAY NEGRU */
 #overlay{
 position:fixed;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.4);
+background:rgba(0,0,0,0.45);
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -38,19 +39,19 @@ align-items:center;
 color:white;
 }
 
-/* LOGO */
+/* TITLU */
 h1{
 font-size:80px;
 text-shadow:0 0 20px #00ff66;
 }
 
-/* BAR */
+/* LOADING BAR */
 .bar{
-width:500px;
-height:20px;
+width:520px;
+height:22px;
 background:#111;
 border:2px solid #333;
-border-radius:20px;
+border-radius:30px;
 overflow:hidden;
 margin-top:40px;
 }
@@ -58,14 +59,21 @@ margin-top:40px;
 .progress{
 height:100%;
 width:0%;
-background:#00ff66;
+background:linear-gradient(90deg,#00ff66,#00ffaa,#00ff66);
 }
 
-/* PERCENT */
+/* PROCENT */
 #percent{
 margin-top:15px;
 font-size:25px;
 color:#00ff66;
+}
+
+/* TEXT MIC */
+#text{
+margin-top:10px;
+color:#aaa;
+font-size:16px;
 }
 </style>
 </head>
@@ -83,25 +91,28 @@ color:#00ff66;
 </div>
 
 <div id="percent">0%</div>
+<div id="text">Loading world...</div>
 
 </div>
 
 <script>
 
 let p = 0;
-
 let bar = document.getElementById("bar");
 let percent = document.getElementById("percent");
 
-let load = setInterval(()=>{
+let loading = setInterval(()=>{
 
 p++;
 bar.style.width = p + "%";
 percent.innerHTML = p + "%";
 
 if(p >= 100){
-clearInterval(load);
-document.getElementById("overlay").innerHTML = "🔥 START GAME 🔥";
+clearInterval(loading);
+
+document.getElementById("overlay").innerHTML = `
+<h1>🔥 START GAME 🔥</h1>
+`;
 }
 
 },50);
