@@ -118,67 +118,12 @@ top:0;
 left:0;
 width:100%;
 height:100%;
+display:none;
 background:#0b0f14;
-font-family:Arial;
-color:white;
-}
-
-/* TOP LEFT */
-.topLeft{
-position:absolute;
-top:10px;
-left:10px;
-background:rgba(0,0,0,0.5);
-padding:10px;
-border-radius:10px;
-}
-
-.topLeft .id{
-color:lime;
-font-weight:bold;
-}
-
-/* XP BAR */
-.xpBar{
-position:absolute;
-top:90px;
-left:10px;
-width:220px;
-height:18px;
-background:#222;
-border-radius:5px;
 overflow:hidden;
 }
 
-.xpFill{
-width:0%;
-height:100%;
-background:lime;
-}
-
-.xpText{
-position:absolute;
-width:100%;
-text-align:center;
-font-size:12px;
-top:1px;
-}
-
-/* USERNAME JOS */
-.usernameBox{
-position:absolute;
-bottom:20px;
-left:20px;
-}
-
-.usernameBox input{
-padding:6px;
-background:black;
-color:white;
-border:1px solid white;
-}
-
-/* CENTER PLAY */
+/* centrul să nu rămână gol */
 .centerPlay{
 position:absolute;
 top:50%;
@@ -186,25 +131,6 @@ left:50%;
 transform:translate(-50%,-50%);
 }
 
-.centerPlay button{
-padding:20px 50px;
-font-size:30px;
-background:lime;
-border:none;
-cursor:pointer;
-}
-
-/* RIGHT MENU */
-.rightMenu{
-position:absolute;
-right:10px;
-top:150px;
-display:flex;
-flex-direction:column;
-gap:10px;
-}
-
-.rightMenu button{
-padding:10px;
-cursor:pointer;
+.topLeft, .xpBar, .usernameBox, .rightMenu{
+z-index:10;
 }
