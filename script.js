@@ -3,7 +3,7 @@ let progress = 0;
 const fill = document.getElementById("fill");
 const text = document.getElementById("text");
 
-let interval = setInterval(() => {
+let load = setInterval(() => {
 
     progress++;
 
@@ -12,12 +12,17 @@ let interval = setInterval(() => {
     if(progress < 60){
         text.innerHTML = progress + "%";
     }
+
     else if(progress < 100){
-        text.innerHTML = "Connecting...";
-    }
-    else{
-        clearInterval(interval);
-        window.location.href = "lobby.html";
+        text.innerHTML = "Connecting to server...";
     }
 
-}, 30);
+    else{
+        clearInterval(load);
+        text.innerHTML = "Connected!";
+        setTimeout(() => {
+            window.location.href = "lobby.html";
+        }, 800);
+    }
+
+}, 25);
