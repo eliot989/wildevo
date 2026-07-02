@@ -1,219 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WildEvo</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:Arial;
 }
 
 body{
+background:black;
 overflow:hidden;
-background:#000;
 }
 
-#loading{
+/* BACKGROUND */
+#bg{
 position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(circle at center, #0a0a0a, black);
+}
+
+/* FLOATING ANIMALS */
+.animal{
+position:absolute;
+font-size:40px;
+opacity:0.8;
+animation:fly linear infinite;
+filter:drop-shadow(0 0 10px rgba(0,255,100,0.7));
+}
+
+@keyframes fly{
+from{
+transform:translateY(110vh) translateX(0);
+}
+to{
+transform:translateY(-20vh) translateX(100px);
+}
+}
+
+/* LOADING CONTAINER */
+#loading{
+position:absolute;
 width:100%;
 height:100%;
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-flex-direction:column;
-background:radial-gradient(circle,#163c16,#071007,#000);
-}
-
-#particles{
-position:absolute;
-width:100%;
-height:100%;
-overflow:hidden;
-}
-
-.particle{
-position:absolute;
-width:4px;
-height:4px;
-background:white;
-border-radius:50%;
-opacity:.5;
-animation:float linear infinite;
-}
-
-@keyframes float{
-from{
-transform:translateY(100vh);
-}
-to{
-transform:translateY(-10vh);
-}
-}
-
-.logo{
-font-size:90px;
 color:white;
-font-weight:bold;
-text-shadow:
-0 0 10px #00ff66,
-0 0 20px #00ff66,
-0 0 40px #00ff66,
-0 0 80px #00ff66;
-animation:pulse 2s infinite;
-z-index:2;
+z-index:10;
 }
 
-@keyframes pulse{
-50%{
-transform:scale(1.05);
-}
-}
-
-.loadingText{
-margin-top:25px;
-font-size:22px;
-color:#ddd;
-z-index:2;
+h1{
+font-size:80px;
+text-shadow:0 0 20px #00ff66;
 }
 
+/* BAR */
 .bar{
-margin-top:35px;
 width:500px;
-height:24px;
+height:25px;
 background:#111;
-border-radius:30px;
+border:2px solid #333;
+border-radius:20px;
 overflow:hidden;
-border:2px solid #555;
-z-index:2;
+margin-top:30px;
 }
 
 .progress{
-width:0%;
 height:100%;
-background:linear-gradient(90deg,#00ff66,#66ff99,#00ff66);
+width:0%;
+background:linear-gradient(90deg,#00ff66,#00ffaa,#00ff66);
 box-shadow:0 0 20px #00ff66;
 }
 
-.percent{
-margin-top:15px;
-font-size:28px;
-color:#7CFC00;
-font-weight:bold;
-z-index:2;
+/* TEXT */
+#text{
+margin-top:20px;
+font-size:20px;
+color:#aaa;
 }
 
+#percent{
+margin-top:10px;
+font-size:25px;
+color:#00ff66;
+}
+
+/* MENU */
 #menu{
 display:none;
-position:fixed;
 width:100%;
 height:100%;
-background:linear-gradient(#68c45a,#2b8b35);
 justify-content:center;
 align-items:center;
-font-size:70px;
 color:white;
+font-size:60px;
 }
-
 </style>
-
 </head>
+
 <body>
+
+<div id="bg"></div>
 
 <div id="loading">
 
-<div id="particles"></div>
-
-<div class="logo">
-🦅 WildEvo
-</div>
-
-<div class="loadingText" id="status">
-Initializing...
-</div>
+<h1>🦅 WILDEVO</h1>
 
 <div class="bar">
-<div class="progress" id="progress"></div>
+<div class="progress" id="bar"></div>
 </div>
 
-<div class="percent" id="percent">
-0%
-</div>
+<div id="percent">0%</div>
+<div id="text">Spawning creatures...</div>
 
 </div>
 
 <div id="menu">
-🔥 WildEvo 🔥
+🔥 GAME STARTED 🔥
 </div>
 
 <script>
 
-const particles=document.getElementById("particles");
+/* ANIMALS (musca, ladybug, phoenix vibe) */
+const icons=["🪰","🐞","🦋","🔥","🦅"];
 
-for(let i=0;i<120;i++){
-
-let p=document.createElement("div");
-
-p.className="particle";
-
-p.style.left=Math.random()*100+"%";
-
-p.style.animationDuration=(5+Math.random()*8)+"s";
-
-p.style.animationDelay=Math.random()*5+"s";
-
-particles.appendChild(p);
-
+for(let i=0;i<25;i++){
+let a=document.createElement("div");
+a.className="animal";
+a.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+a.style.left=Math.random()*100+"%";
+a.style.animationDuration=(5+Math.random()*8)+"s";
+a.style.fontSize=(20+Math.random()*40)+"px";
+document.body.appendChild(a);
 }
 
-const status=document.getElementById("status");
+/* LOADING */
+let p=0;
 
-const percent=document.getElementById("percent");
-
-const progress=document.getElementById("progress");
-
-const text=[
-"Loading textures...",
-"Loading world...",
+let text=[
+"Spawning creatures...",
+"Generating world...",
 "Loading animals...",
-"Preparing map...",
-"Connecting...",
-"Almost done..."
+"Connecting server...",
+"Finalizing..."
 ];
 
-let value=0;
+let bar=document.getElementById("bar");
+let percent=document.getElementById("percent");
+let t=document.getElementById("text");
 
-let timer=setInterval(()=>{
+let i=0;
 
-value++;
+let load=setInterval(()=>{
 
-progress.style.width=value+"%";
+p++;
 
-percent.innerHTML=value+"%";
+bar.style.width=p+"%";
+percent.innerHTML=p+"%";
 
-if(value==15)status.innerHTML=text[1];
-if(value==35)status.innerHTML=text[2];
-if(value==55)status.innerHTML=text[3];
-if(value==75)status.innerHTML=text[4];
-if(value==90)status.innerHTML=text[5];
+if(p==20) t.innerHTML=text[1];
+if(p==40) t.innerHTML=text[2];
+if(p==60) t.innerHTML=text[3];
+if(p==80) t.innerHTML=text[4];
 
-if(value>=100){
-
-clearInterval(timer);
+if(p>=100){
+clearInterval(load);
 
 setTimeout(()=>{
-
 document.getElementById("loading").style.display="none";
-
 document.getElementById("menu").style.display="flex";
-
 },300);
-
 }
 
 },50);
@@ -222,3 +186,6 @@ document.getElementById("menu").style.display="flex";
 
 </body>
 </html>
+🔥 Ce ai acum:
+fundal negru cinematic
+🪰
