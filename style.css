@@ -84,25 +84,24 @@ html,body{
 /* TEXT */
 
 #percent{
-
     position:absolute;
-
     left:50%;
-
     top:50%;
-
     transform:translate(-50%,-50%);
 
+    width:100%;
+    text-align:center;
+
     color:white;
-
-    font-size:24px;
-
+    font-size:26px;
     font-weight:bold;
 
     text-shadow:
-    0 0 5px black,
-    0 0 10px #ff7700;
+        0 0 5px black,
+        0 0 10px #ff7700;
 
+    pointer-events:none;
+    z-index:10;
 }
 
 @keyframes fire{
