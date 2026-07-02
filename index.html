@@ -1,31 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>WildEvo Loading</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<div id="loading">
-
-    <img src="loading.png" class="bg">
-
-    <div class="bar">
-        <div id="fill"></div>
-        <div id="percent">0%</div>
-    </div>
-
-    <button id="playBtn" onclick="goLobby()">PLAY</button>
-
+<div id="loadingBar">
+    <div id="fill"></div>
+    <span id="percent">0%</span>
 </div>
 
-<!-- LOBBY -->
-<div id="lobby" class="hidden">
-    <h1>WILDEVO</h1>
-</div>
+<style>
+#loadingBar{
+position:absolute;
+left:50%;
+bottom:245px;
+transform:translateX(-50%);
+width:700px;
+height:34px;
+background:#111;
+border:3px solid #3f3f3f;
+border-radius:30px;
+overflow:hidden;
+box-shadow:0 0 25px rgba(0,255,80,.4);
+}
 
-<script src="script.js"></script>
-</body>
-</html>
+#fill{
+height:100%;
+width:0%;
+background:linear-gradient(
+90deg,
+#3cff00,
+#7dff2a,
+#b7ff00,
+#7dff2a,
+#3cff00
+);
+background-size:300% 100%;
+animation:shine .8s linear infinite;
+box-shadow:
+0 0 15px #66ff00,
+0 0 35px #66ff00,
+0 0 60px #66ff00;
+border-radius:30px;
+}
+
+#percent{
+position:absolute;
+right:18px;
+top:50%;
+transform:translateY(-50%);
+font-size:24px;
+font-weight:bold;
+color:white;
+text-shadow:0 0 8px black;
+}
+
+@keyframes shine{
+0%{background-position:0%;}
+100%{background-position:300%;}
+}
+</style>
+
+<script>
+let p=0;
+
+let load=setInterval(()=>{
+
+p++;
+
+document.getElementById("fill").style.width=p+"%";
+document.getElementById("percent").innerHTML=p+"%";
+
+if(p>=100){
+clearInterval(load);
+}
+
+},45);
+</script>
