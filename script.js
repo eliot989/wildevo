@@ -6,7 +6,7 @@ const loadingBar = document.getElementById("loadingBar");
 const loadingBg = document.getElementById("loadingBg");
 const lobby = document.getElementById("lobby");
 
-function startLoading(){
+window.onload = function () {
 
 let timer = setInterval(() => {
 
@@ -15,7 +15,7 @@ progress++;
 fill.style.width = progress + "%";
 percent.innerText = progress + "%";
 
-if(progress >= 100){
+if (progress >= 100) {
 
 clearInterval(timer);
 
@@ -23,7 +23,7 @@ percent.innerText = "PLAY";
 
 loadingBar.style.cursor = "pointer";
 
-loadingBar.onclick = function(){
+loadingBar.onclick = function () {
 
 // hide loading
 loadingBar.style.display = "none";
@@ -36,8 +36,6 @@ lobby.style.display = "block";
 
 }
 
-}, 30);
+}, 25);
 
-}
-
-window.onload = startLoading;
+};
