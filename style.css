@@ -1,108 +1,108 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+body {
+margin: 0;
+background: #0b0f14;
+font-family: Arial;
+color: white;
+overflow: hidden;
 }
 
-html,body{
-width:100%;
-height:100%;
-overflow:hidden;
-background:black;
-font-family:Arial,Helvetica,sans-serif;
+/* TOP LEFT */
+.top-left {
+position: absolute;
+top: 10px;
+left: 10px;
+background: rgba(0,0,0,0.5);
+padding: 10px;
+border-radius: 10px;
 }
 
-#background{
-position:fixed;
-left:0;
-top:0;
-width:100%;
-height:100%;
-background:url("assets/loading.png") center center no-repeat;
-background-size:cover;
+/* XP BAR */
+.xp-bar {
+width: 200px;
+height: 20px;
+background: #333;
+margin-top: 5px;
+position: relative;
+border-radius: 10px;
 }
 
-#loadingBar{
-    position:absolute;
-    left:50%;
-    top:69%;
-    transform:translate(-50%,-50%);
-
-    width:700px;
-    height:34px;
-
-    background:#111;
-    border:2px solid #444;
-    border-radius:30px;
-
-    overflow:hidden;
-
-    box-shadow:
-    0 0 15px rgba(0,255,0,.5),
-    0 0 35px rgba(0,255,0,.3);
-
-    z-index:100;
+#xpFill {
+height: 100%;
+width: 0%;
+background: lime;
+border-radius: 10px;
 }
 
-#fill{
-
-height:100%;
-
-width:0%;
-
-border-radius:30px;
-
-background:linear-gradient(
-90deg,
-#2cff00,
-#7eff00,
-#d6ff00,
-#7eff00,
-#2cff00
-);
-
-background-size:300% 100%;
-
-animation:shine .8s linear infinite;
-
-box-shadow:
-0 0 20px #66ff00,
-0 0 45px #66ff00;
-
+#xpText {
+position: absolute;
+width: 100%;
+text-align: center;
+font-size: 12px;
+top: 2px;
 }
 
-#percent{
-
-position:absolute;
-
-left:50%;
-
-top:50%;
-
-transform:translate(-50%,-50%);
-
-font-size:26px;
-
-font-weight:bold;
-
-color:white;
-
-text-shadow:
-0 0 6px black,
-0 0 12px black;
-
-z-index:10;
-
+/* USERNAME */
+.username-box {
+position: absolute;
+bottom: 20px;
+left: 20px;
 }
 
-@keyframes shine{
-
-0%{
-background-position:0%;
+.username-box input {
+padding: 5px;
+background: black;
+color: white;
+border: 1px solid white;
 }
 
-100%{
-background-position:300%;
+/* CENTER PLAY */
+.center {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
 }
 
+.center button {
+padding: 20px 60px;
+font-size: 30px;
+background: lime;
+border: none;
+cursor: pointer;
+}
+
+/* MENU */
+.menu-left {
+position: absolute;
+left: 10px;
+top: 200px;
+}
+
+.menu-right {
+position: absolute;
+right: 10px;
+top: 200px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+button {
+padding: 10px;
+cursor: pointer;
+}
+
+/* TASKS */
+.tasks {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+background: rgba(0,0,0,0.9);
+padding: 20px;
+border-radius: 10px;
+}
+
+.hidden {
+display: none;
 }
