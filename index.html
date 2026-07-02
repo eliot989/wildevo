@@ -18,16 +18,24 @@ background:black;
 overflow:hidden;
 }
 
-/* BACKGROUND */
-.bg{
+/* BACKGROUND IMAGE */
+#bg{
 position:fixed;
 width:100%;
 height:100%;
-background:radial-gradient(circle at center,#0a0a0a,#000);
+background:url("assets/loading.png") center/cover no-repeat;
 }
 
-/* MAIN CONTAINER */
-#loading{
+/* DARK OVERLAY */
+#overlay{
+position:fixed;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.55);
+}
+
+/* LOADING UI */
+#ui{
 position:absolute;
 width:100%;
 height:100%;
@@ -36,72 +44,36 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 color:white;
-z-index:10;
 }
 
-/* LOGO */
 .logo{
-font-size:90px;
+font-size:80px;
 font-weight:bold;
-text-shadow:
-0 0 10px #00ff66,
-0 0 20px #00ff66,
-0 0 40px #00ff66;
-animation:pulse 2s infinite;
+text-shadow:0 0 20px #00ff66;
 }
 
-@keyframes pulse{
-50%{transform:scale(1.05);}
-}
-
-/* SUB TEXT */
-.sub{
-margin-top:10px;
-color:#aaa;
-font-size:18px;
-}
-
-/* LOADING BAR */
 .bar{
 margin-top:40px;
-width:600px;
+width:500px;
 height:22px;
 background:#111;
 border:2px solid #333;
-border-radius:50px;
+border-radius:30px;
 overflow:hidden;
 }
 
 .progress{
 height:100%;
 width:0%;
-background:linear-gradient(90deg,#00ff66,#00ffaa,#00ff66);
-box-shadow:0 0 25px #00ff66;
-transition:width .1s;
+background:#00ff66;
 }
 
-/* PERCENT */
 .percent{
 margin-top:15px;
-font-size:28px;
+font-size:25px;
 color:#00ff66;
 }
 
-/* FLOATING CREATURES */
-.creature{
-position:absolute;
-font-size:45px;
-opacity:0.85;
-animation:float linear infinite;
-filter:drop-shadow(0 0 10px #00ff66);
-}
-
-@keyframes float{
-from{transform:translateY(120vh);}
-to{transform:translateY(-20vh);}
-}
-
-/* MENU */
 #menu{
 display:none;
 width:100%;
@@ -110,19 +82,20 @@ justify-content:center;
 align-items:center;
 font-size:60px;
 color:white;
-background:linear-gradient(#2b7a2b,#0a0a0a);
+background:black;
 }
 </style>
+
 </head>
 
 <body>
 
-<div class="bg"></div>
+<div id="bg"></div>
+<div id="overlay"></div>
 
-<div id="loading">
+<div id="ui">
 
 <div class="logo">WILD EVO</div>
-<div class="sub">Evolve. Survive. Dominate.</div>
 
 <div class="bar">
 <div class="progress" id="bar"></div>
@@ -133,25 +106,11 @@ background:linear-gradient(#2b7a2b,#0a0a0a);
 </div>
 
 <div id="menu">
-🔥 WILDEVO GAME STARTED 🔥
+🔥 GAME STARTED 🔥
 </div>
 
 <script>
 
-/* 🪰🐞🦋🔥🦅 creatures like evo world */
-const creatures=["🪰","🐞","🦋","🔥","🦅","🐺","🦂"];
-
-for(let i=0;i<40;i++){
-let c=document.createElement("div");
-c.className="creature";
-c.innerHTML=creatures[Math.floor(Math.random()*creatures.length)];
-c.style.left=Math.random()*100+"%";
-c.style.animationDuration=(4+Math.random()*8)+"s";
-c.style.fontSize=(20+Math.random()*50)+"px";
-document.body.appendChild(c);
-}
-
-/* LOADING SYSTEM */
 let p=0;
 let bar=document.getElementById("bar");
 let percent=document.getElementById("percent");
@@ -166,9 +125,11 @@ if(p>=100){
 clearInterval(load);
 
 setTimeout(()=>{
-document.getElementById("loading").style.display="none";
+document.getElementById("ui").style.display="none";
+document.getElementById("bg").style.display="none";
+document.getElementById("overlay").style.display="none";
 document.getElementById("menu").style.display="flex";
-},400);
+},300);
 }
 
 },50);
