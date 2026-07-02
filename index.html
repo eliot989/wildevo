@@ -2,36 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>WildEvo</title>
+<title>WildEvo Loading</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- LOADING SCREEN -->
-<div id="loadingScreen">
-    <div class="logo">WILDEVO</div>
+<div id="loading">
+
+    <img src="loading.png" class="bg">
 
     <div class="bar">
         <div id="fill"></div>
         <div id="percent">0%</div>
     </div>
 
-    <button id="playBtn" class="hidden" onclick="enterLobby()">PLAY</button>
+    <button id="playBtn" onclick="goLobby()">PLAY</button>
+
 </div>
 
 <!-- LOBBY -->
 <div id="lobby" class="hidden">
-
-    <div class="topLeft">
-        🇷🇺 WEST EUROPE 1 #1 <br>
-        Level: <span id="level">0</span>
-    </div>
-
-    <div class="center">
-        <button onclick="alert('Game Start')">PLAY GAME</button>
-    </div>
-
+    <h1>WILDEVO</h1>
 </div>
 
 <script src="script.js"></script>
