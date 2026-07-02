@@ -27,26 +27,22 @@ html,body{
 /* LOADING BAR */
 
 #loadingBar{
-    position:absolute;
-
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
+    position:fixed;
 
     width:700px;
     height:34px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
 
     background:#111;
     border-radius:30px;
     overflow:hidden;
 
-    border:2px solid #ff7700;
-
-    box-shadow:
-    0 0 20px #ff7700,
-    0 0 40px rgba(255,90,0,.6);
+    z-index:9999;
 }
-
 /* FILL */
 
 #fill{
