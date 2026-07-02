@@ -19,40 +19,34 @@ html,body{
     background:url("assets/loading.png") center/cover no-repeat;
 }
 
-/* BAR */
+/* LOADING BAR */
 #loadingBar{
-    position:fixed !important;
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
 
-    top:50% !important;
-    left:50% !important;
+    width:1000px;
+    height:50px;
 
-    transform:translate(-50%,-50%) !important;
+    background:#111;
+    border:3px solid #ff9800;
+    border-radius:40px;
 
-    width:1000px !important;
-    height:50px !important;
+    overflow:hidden;
 
-    background:red !important;
-    z-index:999999 !important;
+    box-shadow:
+        0 0 20px #ff8800,
+        0 0 45px #ff5500;
 }
+
 /* FILL */
 #fill{
     width:0%;
     height:100%;
-
-    background:linear-gradient(
-        90deg,
-        #ff9900,
-        #ff5500,
-        #ff9900
-    );
-
+    background:linear-gradient(90deg,#ff9900,#ff5500,#ff9900);
     background-size:300% 100%;
     animation:glow 1s linear infinite;
-}
-
-@keyframes glow{
-    0%{background-position:0%;}
-    100%{background-position:300%;}
 }
 
 /* TEXT */
@@ -64,4 +58,10 @@ html,body{
     color:white;
     font-size:22px;
     font-weight:bold;
+}
+
+/* ANIMATION */
+@keyframes glow{
+    0%{background-position:0%;}
+    100%{background-position:300%;}
 }
