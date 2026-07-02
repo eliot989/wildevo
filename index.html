@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WildEvo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WildEvo</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
@@ -17,27 +18,37 @@
 </div>
 
 <script>
-let percent = 0;
+
+let progress = 0;
 
 const fill = document.getElementById("fill");
-const text = document.getElementById("percent");
+const percent = document.getElementById("percent");
 
-const loading = setInterval(() => {
+const loading = setInterval(function(){
 
-    percent++;
+    progress++;
 
-    fill.style.width = percent + "%";
-    text.innerHTML = percent + "%";
+    fill.style.width = progress + "%";
+    percent.innerHTML = progress + "%";
 
-    if(percent >= 100){
+    if(progress >= 100){
+
         clearInterval(loading);
 
-        setTimeout(()=>{
-            window.location.href="game.html";
-        },500);
+        percent.innerHTML = "PLAY";
+
+        document.getElementById("loadingBar").style.cursor = "pointer";
+
+        document.getElementById("loadingBar").onclick = function(){
+
+            alert("Aici va începe jocul WildEvo!");
+
+        };
+
     }
 
 },50);
+
 </script>
 
 </body>
