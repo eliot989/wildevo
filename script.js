@@ -1,29 +1,20 @@
 let progress = 0;
 
 const fill = document.getElementById("fill");
-const percent = document.getElementById("percent");
+const text = document.getElementById("text");
 
-const loading = setInterval(function(){
+const loading = setInterval(() => {
 
     progress++;
 
     fill.style.width = progress + "%";
-    percent.innerHTML = progress + "%";
+    text.innerHTML = progress + "%";
 
     if(progress >= 100){
 
         clearInterval(loading);
 
-        percent.innerHTML = "PLAY";
-
-        document.getElementById("loadingBar").style.cursor = "pointer";
-
-        document.getElementById("loadingBar").onclick = function(){
-
-            alert("Lobby-ul va fi adăugat în pasul următor!");
-
-        };
-
+        text.innerHTML = "PLAY";
     }
 
 },30);
