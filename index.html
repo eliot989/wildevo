@@ -85,32 +85,22 @@ progress++;
 fill.style.width = progress + "%";
 percent.innerHTML = progress + "%";
 
-if (progress >= 100) {
+if(progress >= 100){
 
 clearInterval(loading);
 
-// 👉 schimbăm doar textul
 percent.innerHTML = "PLAY";
 
-// 👉 ACTIVĂ CLICK PE BARĂ
-document.getElementById("loadingBar").style.cursor = "pointer";
+document.getElementById("loadingBar").onclick = function(){
 
-document.getElementById("loadingBar").onclick = function () {
-
-// 🔥 ASCUNDEM LOADING (NU ȘTERGEM DOM)
 document.getElementById("loadingBar").style.display = "none";
 document.getElementById("background").style.display = "none";
 
-// 🔥 ARĂTĂM LOBBY (EXISTENT DIN HTML)
 document.getElementById("lobby").style.display = "block";
 
 };
 
 }
-
-},
-30);
-
 </script>
  <div id="lobby" style="display:none;">
 
