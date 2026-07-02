@@ -1,109 +1,43 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WildEvo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WildEvo</title>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-overflow:hidden;
-}
-
-/* IMAGINEA TA DIRECT */
-#bg{
-position:fixed;
-width:100%;
-height:100%;
-background:url("assets/loading.png") center/cover no-repeat;
-}
-
-/* BARĂ LOADING PE IMAGINE */
-#ui{
-position:fixed;
-bottom:80px;
-left:50%;
-transform:translateX(-50%);
-text-align:center;
-color:white;
-font-family:Arial;
-}
-
-.bar{
-width:600px;
-height:25px;
-background:rgba(0,0,0,0.5);
-border:2px solid #222;
-border-radius:20px;
-overflow:hidden;
-}
-
-.progress{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,#00ff00,#66ff66);
-}
-
-#percent{
-margin-top:10px;
-font-size:22px;
-color:#00ff00;
-font-weight:bold;
-}
-
-/* TEXT MIC CA IN JOC */
-#text{
-margin-top:5px;
-font-size:14px;
-color:#ddd;
-}
-</style>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div id="bg"></div>
+<div id="background"></div>
 
-<div id="ui">
-
-<div class="bar">
-<div class="progress" id="bar"></div>
-</div>
-
-<div id="percent">0%</div>
-<div id="text">Loading world...</div>
-
+<div id="loadingBar">
+    <div id="fill"></div>
+    <div id="percent">0%</div>
 </div>
 
 <script>
+let percent = 0;
 
-let p = 0;
-let bar = document.getElementById("bar");
-let percent = document.getElementById("percent");
+const fill = document.getElementById("fill");
+const text = document.getElementById("percent");
 
-let load = setInterval(()=>{
+const loading = setInterval(() => {
 
-p++;
-bar.style.width = p + "%";
-percent.innerHTML = p + "%";
+    percent++;
 
-if(p >= 76){
-document.getElementById("text").innerHTML = "Generating world...";
-}
+    fill.style.width = percent + "%";
+    text.innerHTML = percent + "%";
 
-if(p >= 100){
-clearInterval(load);
-document.getElementById("text").innerHTML = "Done!";
-}
+    if(percent >= 100){
+        clearInterval(loading);
+
+        setTimeout(()=>{
+            window.location.href="game.html";
+        },500);
+    }
 
 },50);
-
 </script>
 
 </body>
