@@ -21,27 +21,16 @@ html,body{
 }
 
 #loadingBar{
-    position:absolute;
+    position: fixed !important;
+    left: 50% !important;
+    top: 75% !important;
+    transform: translate(-50%, -50%) !important;
 
-    left:50%;
-    bottom:120px;
+    width: 1000px !important;
+    height: 50px !important;
 
-    transform:translateX(-50%);
-
-    width:1000px;
-    max-width:80vw;
-    height:44px;
-
-    background:#111;
-
-    border:2px solid #ff8800;
-    border-radius:40px;
-
-    overflow:hidden;
-
-    box-shadow:
-    0 0 20px #ff8800,
-    0 0 45px #ff5500;
+    background: red !important;
+    z-index: 999999 !important;
 }
 
 #fill{
