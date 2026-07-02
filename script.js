@@ -10,11 +10,23 @@ const loading = setInterval(() => {
     fill.style.width = progress + "%";
     text.innerHTML = progress + "%";
 
-    if(progress >= 100){
+    if (progress >= 100) {
 
         clearInterval(loading);
 
-        text.innerHTML = "PLAY";
+        text.innerHTML = "Connecting to server...";
+
+        setTimeout(() => {
+
+            text.innerHTML = "Connected!";
+
+            setTimeout(() => {
+
+                window.location.href = "lobby.html";
+
+            }, 1000);
+
+        }, 1500);
     }
 
-},30);
+}, 30);
