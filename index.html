@@ -6,158 +6,24 @@
 <title>WildEvo</title>
 
 <link rel="stylesheet" href="style.css">
-
 </head>
+
 <body>
 
-<div id="background"></div>
+<!-- LOADING BACKGROUND -->
+<div id="loadingBg"></div>
 
+<!-- LOADING BAR -->
 <div id="loadingBar">
-<div id="lobby" style="display:none;">
-
-    <!-- LEFT TASK PANEL -->
-    <div class="leftPanel">
-
-        <div class="profileCard">
-            <div class="level">Level 0</div>
-            <div class="xp">0/100</div>
-        </div>
-
-        <div class="task">
-            <h3>Evolve 15 times</h3>
-            <div class="bar"></div>
-            <span>+50 XP</span>
-        </div>
-
-        <div class="task">
-            <h3>Eat 5 bread</h3>
-            <div class="bar"></div>
-            <span>+100 XP</span>
-        </div>
-
-        <div class="task">
-            <h3>Evolve to Ghost</h3>
-            <div class="bar"></div>
-            <span>+100000 XP</span>
-        </div>
-
-    </div>
-
-    <!-- TOP CENTER BAR -->
-    <div class="topBar">
-
-        <div class="region">
-            🇷🇺 West Europe 1 (172/300)
-        </div>
-
-        <button class="playBtn">▶ PLAY</button>
-
-        <div class="username">[ username ]</div>
-
-    </div>
-
-    <!-- RIGHT MENU -->
-    <div class="rightMenu">
-        <button>👑 SHOP</button>
-        <button>🏆 LEADERBOARDS</button>
-        <button>⚙ SETTINGS</button>
-    </div>
-
-</div>
-</div>
     <div id="fill"></div>
     <div id="percent">0%</div>
 </div>
-    
-<button id="playBtn" style="display:none;">PLAY</button>
 
-<script>
-    
-let progress = 0;
-
-const fill = document.getElementById("fill");
-const percent = document.getElementById("percent");
-const loadingBar = document.getElementById("loadingBar");
-const background = document.getElementById("background");
-const lobby = document.getElementById("lobby");
-
-function startLoading() {
-
-let loading = setInterval(() => {
-
-progress++;
-
-fill.style.width = progress + "%";
-percent.innerText = progress + "%";
-
-if (progress >= 100) {
-
-clearInterval(loading);
-
-percent.innerText = "PLAY";
-
-loadingBar.style.cursor = "pointer";
-
-loadingBar.onclick = function () {
-
-// ascunde loading COMPLET
-loadingBar.style.display = "none";
-background.style.display = "none";
-
-// arată lobby CURAT
-lobby.style.display = "block";
-lobby.style.background = "url('assets/lobby.png') center/cover no-repeat";
-
-};
-
-}
-
-}, 30);
-
-}
-
-window.onload = startLoading;
-}, 30);
-
-};
-</script>
- <div id="lobby" style="display:none;">
-
-    <!-- TOP LEFT PLAYER INFO -->
-    <div class="topLeft">
-        🇷🇺 WEST EUROPE 1<br>
-        <span class="id">#1</span>
-        <br>
-        Level 0
-    </div>
-
-    <!-- XP BAR -->
-    <div class="xpBar">
-        <div class="xpFill"></div>
-        <div class="xpText">0/100</div>
-    </div>
-
-    <!-- USERNAME (SEPARAT JOS) -->
-    <div class="usernameBox">
-        <input value="ELIOT" placeholder="username">
-    </div>
-
-    <!-- CENTER PLAY -->
-    <div class="centerPlay">
-        <button onclick="startGame()">PLAY</button>
-    </div>
-
-    <!-- RIGHT MENU -->
-    <div class="rightMenu">
-        <button>SHOP</button>
-        <button>TASKS</button>
-        <button>SETTINGS</button>
-    </div>
-
+<!-- LOBBY -->
+<div id="lobby">
+    <button onclick="alert('START GAME')">PLAY</button>
 </div>
-    
+
 <script src="script.js"></script>
-<script src="lobby.js"></script>
-    
 </body>
 </html>
