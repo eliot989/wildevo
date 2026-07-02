@@ -8,8 +8,8 @@
 
 <body>
 
-<!-- LOADING SCREEN -->
-<div id="loadingScreen">
+<!-- LOADING -->
+<div id="loading">
   <div class="logo">WILDEVO</div>
 
   <div class="bar">
@@ -22,9 +22,9 @@
 <!-- LOBBY -->
 <div id="lobby" class="hidden">
 
-  <!-- TOP LEFT -->
-  <div class="top-left">
-    🇷🇺 WEST EUROPE 1 #1<br>
+  <div class="top">
+    🇷🇺 WEST EUROPE 1 #1
+    <br>
     Level: <span id="level">0</span>
 
     <div class="xp-bar">
@@ -40,11 +40,11 @@
 
   <!-- PLAY -->
   <div class="center">
-    <button onclick="alert('Game Start!')">PLAY</button>
+    <button onclick="enterGame()">PLAY</button>
   </div>
 
   <!-- MENU -->
-  <div class="menu-right">
+  <div class="menu">
     <button onclick="openTasks()">TASKS</button>
     <button>SHOP</button>
     <button>LEADERBOARD</button>
@@ -55,11 +55,11 @@
   <div id="tasks" class="tasks hidden">
     <h2>TASKS</h2>
 
-    <button onclick="completeTask(100)">Evolve 15 times (+100 XP)</button>
-    <button onclick="completeTask(100)">Eat 5 bread (+100 XP)</button>
-    <button onclick="completeTask(100000)">Evolve to Ghost (+100000 XP)</button>
+    <button onclick="addXP(100)">Evolve 15 times (+100 XP)</button>
+    <button onclick="addXP(100)">Eat 5 bread (+100 XP)</button>
+    <button onclick="addXP(100000)">Evolve Ghost (+100000 XP)</button>
 
-    <button onclick="closeTasks()">CLOSE</button>
+    <button onclick="closeTasks()">Close</button>
   </div>
 
 </div>
