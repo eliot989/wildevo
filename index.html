@@ -19,32 +19,14 @@ overflow:hidden;
 }
 
 /* BACKGROUND */
-#bg{
+.bg{
 position:fixed;
 width:100%;
 height:100%;
-background:radial-gradient(circle at center, #0a0a0a, black);
+background:radial-gradient(circle at center,#0a0a0a,#000);
 }
 
-/* FLOATING ANIMALS */
-.animal{
-position:absolute;
-font-size:40px;
-opacity:0.8;
-animation:fly linear infinite;
-filter:drop-shadow(0 0 10px rgba(0,255,100,0.7));
-}
-
-@keyframes fly{
-from{
-transform:translateY(110vh) translateX(0);
-}
-to{
-transform:translateY(-20vh) translateX(100px);
-}
-}
-
-/* LOADING CONTAINER */
+/* MAIN CONTAINER */
 #loading{
 position:absolute;
 width:100%;
@@ -57,40 +39,66 @@ color:white;
 z-index:10;
 }
 
-h1{
-font-size:80px;
-text-shadow:0 0 20px #00ff66;
+/* LOGO */
+.logo{
+font-size:90px;
+font-weight:bold;
+text-shadow:
+0 0 10px #00ff66,
+0 0 20px #00ff66,
+0 0 40px #00ff66;
+animation:pulse 2s infinite;
 }
 
-/* BAR */
+@keyframes pulse{
+50%{transform:scale(1.05);}
+}
+
+/* SUB TEXT */
+.sub{
+margin-top:10px;
+color:#aaa;
+font-size:18px;
+}
+
+/* LOADING BAR */
 .bar{
-width:500px;
-height:25px;
+margin-top:40px;
+width:600px;
+height:22px;
 background:#111;
 border:2px solid #333;
-border-radius:20px;
+border-radius:50px;
 overflow:hidden;
-margin-top:30px;
 }
 
 .progress{
 height:100%;
 width:0%;
 background:linear-gradient(90deg,#00ff66,#00ffaa,#00ff66);
-box-shadow:0 0 20px #00ff66;
+box-shadow:0 0 25px #00ff66;
+transition:width .1s;
 }
 
-/* TEXT */
-#text{
-margin-top:20px;
-font-size:20px;
-color:#aaa;
-}
-
-#percent{
-margin-top:10px;
-font-size:25px;
+/* PERCENT */
+.percent{
+margin-top:15px;
+font-size:28px;
 color:#00ff66;
+}
+
+/* FLOATING CREATURES */
+.creature{
+position:absolute;
+font-size:45px;
+opacity:0.85;
+animation:float linear infinite;
+filter:drop-shadow(0 0 10px #00ff66);
+}
+
+@keyframes float{
+from{transform:translateY(120vh);}
+to{transform:translateY(-20vh);}
 }
 
 /* MENU */
@@ -100,76 +108,59 @@ width:100%;
 height:100%;
 justify-content:center;
 align-items:center;
-color:white;
 font-size:60px;
+color:white;
+background:linear-gradient(#2b7a2b,#0a0a0a);
 }
 </style>
 </head>
 
 <body>
 
-<div id="bg"></div>
+<div class="bg"></div>
 
 <div id="loading">
 
-<h1>🦅 WILDEVO</h1>
+<div class="logo">WILD EVO</div>
+<div class="sub">Evolve. Survive. Dominate.</div>
 
 <div class="bar">
 <div class="progress" id="bar"></div>
 </div>
 
-<div id="percent">0%</div>
-<div id="text">Spawning creatures...</div>
+<div class="percent" id="percent">0%</div>
 
 </div>
 
 <div id="menu">
-🔥 GAME STARTED 🔥
+🔥 WILDEVO GAME STARTED 🔥
 </div>
 
 <script>
 
-/* ANIMALS (musca, ladybug, phoenix vibe) */
-const icons=["🪰","🐞","🦋","🔥","🦅"];
+/* 🪰🐞🦋🔥🦅 creatures like evo world */
+const creatures=["🪰","🐞","🦋","🔥","🦅","🐺","🦂"];
 
-for(let i=0;i<25;i++){
-let a=document.createElement("div");
-a.className="animal";
-a.innerHTML=icons[Math.floor(Math.random()*icons.length)];
-a.style.left=Math.random()*100+"%";
-a.style.animationDuration=(5+Math.random()*8)+"s";
-a.style.fontSize=(20+Math.random()*40)+"px";
-document.body.appendChild(a);
+for(let i=0;i<40;i++){
+let c=document.createElement("div");
+c.className="creature";
+c.innerHTML=creatures[Math.floor(Math.random()*creatures.length)];
+c.style.left=Math.random()*100+"%";
+c.style.animationDuration=(4+Math.random()*8)+"s";
+c.style.fontSize=(20+Math.random()*50)+"px";
+document.body.appendChild(c);
 }
 
-/* LOADING */
+/* LOADING SYSTEM */
 let p=0;
-
-let text=[
-"Spawning creatures...",
-"Generating world...",
-"Loading animals...",
-"Connecting server...",
-"Finalizing..."
-];
-
 let bar=document.getElementById("bar");
 let percent=document.getElementById("percent");
-let t=document.getElementById("text");
-
-let i=0;
 
 let load=setInterval(()=>{
 
 p++;
-
 bar.style.width=p+"%";
 percent.innerHTML=p+"%";
-
-if(p==20) t.innerHTML=text[1];
-if(p==40) t.innerHTML=text[2];
-if(p==60) t.innerHTML=text[3];
-if(p==80) t.innerHTML=text[4];
 
 if(p>=100){
 clearInterval(load);
@@ -177,7 +168,7 @@ clearInterval(load);
 setTimeout(()=>{
 document.getElementById("loading").style.display="none";
 document.getElementById("menu").style.display="flex";
-},300);
+},400);
 }
 
 },50);
@@ -186,6 +177,3 @@ document.getElementById("menu").style.display="flex";
 
 </body>
 </html>
-🔥 Ce ai acum:
-fundal negru cinematic
-🪰
