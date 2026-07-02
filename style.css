@@ -112,14 +112,21 @@ background-position:300%;
 
 }
 
-#lobby{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-display:none;
+#loadingBar{
+z-index: 1000;
+}
 
-/* 👇 AICI pui imaginea ta */
+#background{
+z-index: 1;
+}
+
+#lobby{
+z-index: 10;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: none;
 background: url("assets/lobby.png") center/cover no-repeat;
 }
