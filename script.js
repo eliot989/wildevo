@@ -14,13 +14,13 @@ percent.innerText = progress + "%";
 if (progress >= 100) {
 clearInterval(loading);
 percent.innerText = "READY";
-playBtn.classList.remove("hidden");
+playBtn.style.display = "block";
 }
 
 }, 30);
 
-/* ENTER LOBBY */
-function enterLobby() {
-document.getElementById("loadingScreen").style.display = "none";
+/* PLAY → LOBBY */
+function goLobby() {
+document.getElementById("loading").style.display = "none";
 document.getElementById("lobby").classList.remove("hidden");
 }
