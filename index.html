@@ -14,16 +14,16 @@ font-family:Arial;
 }
 
 body{
-background:black;
 overflow:hidden;
+background:black;
 }
 
-/* BACKGROUND IMAGE */
+/* IMAGINEA TA CA FUNDAL */
 #bg{
 position:fixed;
 width:100%;
 height:100%;
-background:url("assets/loading.png") center/cover no-repeat;
+background:url("file_00000000cb24720a8025a4563a5f3adb") center/cover no-repeat;
 }
 
 /* DARK OVERLAY */
@@ -31,10 +31,10 @@ background:url("assets/loading.png") center/cover no-repeat;
 position:fixed;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.55);
+background:rgba(0,0,0,0.45);
 }
 
-/* LOADING UI */
+/* UI */
 #ui{
 position:absolute;
 width:100%;
@@ -54,7 +54,7 @@ text-shadow:0 0 20px #00ff66;
 
 .bar{
 margin-top:40px;
-width:500px;
+width:520px;
 height:22px;
 background:#111;
 border:2px solid #333;
@@ -74,6 +74,7 @@ font-size:25px;
 color:#00ff66;
 }
 
+/* MENU */
 #menu{
 display:none;
 width:100%;
@@ -85,17 +86,18 @@ color:white;
 background:black;
 }
 </style>
-
 </head>
 
 <body>
 
+<!-- BACKGROUND IMAGE -->
 <div id="bg"></div>
 <div id="overlay"></div>
 
+<!-- LOADING UI -->
 <div id="ui">
 
-<div class="logo">WILD EVO</div>
+<div class="logo">🦅 WILDEVO</div>
 
 <div class="bar">
 <div class="progress" id="bar"></div>
@@ -105,8 +107,9 @@ background:black;
 
 </div>
 
+<!-- MENU -->
 <div id="menu">
-🔥 GAME STARTED 🔥
+🔥 PLAY WILDEVO 🔥
 </div>
 
 <script>
@@ -125,10 +128,12 @@ if(p>=100){
 clearInterval(load);
 
 setTimeout(()=>{
+
 document.getElementById("ui").style.display="none";
 document.getElementById("bg").style.display="none";
 document.getElementById("overlay").style.display="none";
 document.getElementById("menu").style.display="flex";
+
 },300);
 }
 
