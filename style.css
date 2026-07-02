@@ -25,10 +25,23 @@ background-size:cover;
 #loadingBar{
     position:absolute;
     left:50%;
-    top:65%;
+    top:69%;
     transform:translate(-50%,-50%);
+
     width:700px;
     height:34px;
+
+    background:#111;
+    border:2px solid #444;
+    border-radius:30px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 0 15px rgba(0,255,0,.5),
+    0 0 35px rgba(0,255,0,.3);
+
+    z-index:100;
 }
 
 #fill{
