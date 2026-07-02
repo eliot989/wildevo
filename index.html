@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
@@ -6,25 +6,31 @@
 <title>WildEvo</title>
 
 <link rel="stylesheet" href="style.css">
-
 </head>
+
 <body>
 
-<div id="background"></div>
-
-<div id="loadingBar">
-    <div id="fill"></div>
+<!-- LOADING -->
+<div id="loadingScreen">
+    <div id="loadingBar">
+        <div id="fill"></div>
+    </div>
     <div id="percent">0%</div>
 </div>
 
-<script>
+<!-- LOBBY -->
+<div id="lobby" style="display:none;">
+    <h1>WildEvo Lobby</h1>
+    <button onclick="playGame()">PLAY</button>
+</div>
 
+<script>
 let progress = 0;
 
 const fill = document.getElementById("fill");
 const percent = document.getElementById("percent");
 
-const loading = setInterval(function(){
+let loading = setInterval(() => {
 
     progress++;
 
@@ -32,23 +38,21 @@ const loading = setInterval(function(){
     percent.innerHTML = progress + "%";
 
     if(progress >= 100){
-
         clearInterval(loading);
 
         percent.innerHTML = "PLAY";
 
-        document.getElementById("loadingBar").style.cursor = "pointer";
-
         document.getElementById("loadingBar").onclick = function(){
-
-            alert("Aici va începe jocul WildEvo!");
-
+            document.getElementById("loadingScreen").style.display = "none";
+            document.getElementById("lobby").style.display = "block";
         };
-
     }
 
-},50);
+}, 30);
 
+function playGame(){
+    alert("Game starts here!");
+}
 </script>
 
 </body>
