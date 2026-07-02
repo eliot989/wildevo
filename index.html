@@ -17,6 +17,7 @@
 </div>
 
 <script>
+    
 let percent = 0;
 
 const fill = document.getElementById("fill");
@@ -29,15 +30,20 @@ const loading = setInterval(() => {
     fill.style.width = percent + "%";
     text.innerHTML = percent + "%";
 
-    if(percent >= 100){
+    if (percent >= 100) {
         clearInterval(loading);
 
-        setTimeout(()=>{
-            window.location.href="game.html";
-        },500);
+        text.innerHTML = "PLAY";
+
+        document.getElementById("loadingBar").style.cursor = "pointer";
+
+        document.getElementById("loadingBar").onclick = function () {
+            alert("Aici va începe jocul WildEvo!");
+        };
     }
 
-},50);
+}, 50);
+
 </script>
 
 </body>
