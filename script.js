@@ -10,10 +10,10 @@ let interval = setInterval(() => {
     fill.style.width = progress + "%";
 
     if(progress < 60){
-        text.innerHTML = "Connecting to server...";
+        text.innerHTML = progress + "%";
     }
     else if(progress < 100){
-        text.innerHTML = "Connected...";
+        text.innerHTML = "Connecting...";
     }
     else{
         clearInterval(interval);
