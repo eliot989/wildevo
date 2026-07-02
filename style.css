@@ -23,30 +23,12 @@ background-size:cover;
 }
 
 #loadingBar{
-
-position:absolute;
-
-left:50%;
-
-bottom:290px;
-
-transform:translateX(-50%);
-
-width:700px;
-
-height:34px;
-
-background:#111;
-
-border-radius:30px;
-
-overflow:hidden;
-
-border:2px solid #4f4f4f;
-
-box-shadow:
-0 0 20px rgba(0,255,80,.4);
-
+    position:absolute;
+    left:50%;
+    top:62%;
+    transform:translate(-50%,-50%);
+    width:700px;
+    height:34px;
 }
 
 #fill{
