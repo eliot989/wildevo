@@ -22,11 +22,25 @@ html,body{
 /* LOADING BAR */
 #loadingBar{
     position:fixed !important;
-    top:50vh !important;
-    left:50vw !important;
-    transform:translate(-50%,-50%) !important;
-}
 
+    left:50% !important;
+    top:50% !important;
+
+    transform:translate(-50%,-50%) !important;
+
+    width:1000px;
+    height:50px;
+
+    background:#111 !important;
+    border:3px solid #ff9800 !important;
+    border-radius:40px;
+
+    overflow:hidden;
+
+    box-shadow:0 0 25px #ff8800;
+
+    z-index:999999 !important;
+}
 /* FILL */
 #fill{
     width:0%;
