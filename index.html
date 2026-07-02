@@ -100,14 +100,12 @@ clearInterval(loading);
 // schimbă doar text
 percent.innerHTML = "PLAY";
 
-document.getElementById("loadingBar").onclick = function () {
-
-// ASCUNDE LOADING
 document.getElementById("loadingBar").style.display = "none";
 document.getElementById("background").style.display = "none";
 
-// ARATĂ LOBBY
+const lobby = document.getElementById("lobby");
 lobby.style.display = "block";
+lobby.style.zIndex = "999";
 
 };
 
