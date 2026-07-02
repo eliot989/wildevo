@@ -119,18 +119,72 @@ left:0;
 width:100%;
 height:100%;
 display:none;
-background:#0b0f14;
-overflow:hidden;
+background:url("assets/lobby.png") center/cover no-repeat;
+font-family:Arial;
 }
 
-/* centrul să nu rămână gol */
-.centerPlay{
+/* LEFT TASK PANEL */
+.leftPanel{
 position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
+left:20px;
+top:20px;
+display:flex;
+flex-direction:column;
+gap:15px;
 }
 
-.topLeft, .xpBar, .usernameBox, .rightMenu{
-z-index:10;
+.task{
+background:rgba(0,0,0,0.7);
+padding:10px;
+border-radius:10px;
+color:white;
+width:220px;
+}
+
+.card{
+background:rgba(0,0,0,0.7);
+padding:10px;
+border-radius:10px;
+color:white;
+text-align:center;
+}
+
+/* TOP BAR */
+.topBar{
+position:absolute;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+align-items:center;
+gap:20px;
+background:rgba(0,0,0,0.6);
+padding:10px 20px;
+border-radius:15px;
+color:white;
+}
+
+.playBtn{
+background:lime;
+border:none;
+padding:10px 25px;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* RIGHT MENU */
+.rightMenu{
+position:absolute;
+right:20px;
+top:150px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.rightMenu button{
+padding:15px;
+border:none;
+cursor:pointer;
+font-weight:bold;
 }
