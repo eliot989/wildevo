@@ -12,12 +12,10 @@ let interval = setInterval(() => {
     if(progress < 60){
         text.innerHTML = "Connecting to server...";
     }
-
-    if(progress >= 60 && progress < 100){
+    else if(progress < 100){
         text.innerHTML = "Connected...";
     }
-
-    if(progress >= 100){
+    else{
         clearInterval(interval);
         window.location.href = "lobby.html";
     }
