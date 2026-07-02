@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WildEvo</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -15,7 +16,7 @@ font-family:Arial,sans-serif;
 
 body{
 overflow:hidden;
-background:#050505;
+background:#000;
 }
 
 #loading{
@@ -26,75 +27,84 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-background:
-radial-gradient(circle at top,#1b5e20,#071107,#000);
-color:white;
+background:radial-gradient(circle,#163c16,#071007,#000);
 }
 
-#loading::before{
-content:"";
+#particles{
 position:absolute;
-width:200%;
-height:200%;
-background:
-radial-gradient(rgba(255,255,255,.08) 2px,transparent 2px);
-background-size:60px 60px;
-animation:bgMove 20s linear infinite;
-opacity:.3;
+width:100%;
+height:100%;
+overflow:hidden;
 }
 
-@keyframes bgMove{
-from{transform:translate(0,0);}
-to{transform:translate(-300px,-300px);}
+.particle{
+position:absolute;
+width:4px;
+height:4px;
+background:white;
+border-radius:50%;
+opacity:.5;
+animation:float linear infinite;
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+}
+to{
+transform:translateY(-10vh);
+}
 }
 
 .logo{
 font-size:90px;
+color:white;
 font-weight:bold;
-letter-spacing:4px;
 text-shadow:
-0 0 15px #00ff66,
+0 0 10px #00ff66,
+0 0 20px #00ff66,
 0 0 40px #00ff66,
-0 0 70px #00ff66;
-z-index:2;
+0 0 80px #00ff66;
 animation:pulse 2s infinite;
+z-index:2;
 }
 
 @keyframes pulse{
-50%{transform:scale(1.05);}
+50%{
+transform:scale(1.05);
+}
 }
 
-.status{
+.loadingText{
 margin-top:25px;
-font-size:20px;
+font-size:22px;
 color:#ddd;
 z-index:2;
 }
 
 .bar{
 margin-top:35px;
-width:450px;
+width:500px;
 height:24px;
-background:#1d1d1d;
-border-radius:50px;
+background:#111;
+border-radius:30px;
 overflow:hidden;
 border:2px solid #555;
 z-index:2;
 }
 
 .progress{
-height:100%;
 width:0%;
-background:linear-gradient(90deg,#00ff66,#7CFC00,#00ff66);
-box-shadow:0 0 25px #00ff66;
-transition:width .05s linear;
+height:100%;
+background:linear-gradient(90deg,#00ff66,#66ff99,#00ff66);
+box-shadow:0 0 20px #00ff66;
 }
 
 .percent{
 margin-top:15px;
 font-size:28px;
-font-weight:bold;
 color:#7CFC00;
+font-weight:bold;
 z-index:2;
 }
 
@@ -103,22 +113,27 @@ display:none;
 position:fixed;
 width:100%;
 height:100%;
-background:linear-gradient(#63c74d,#2d7f2d);
+background:linear-gradient(#68c45a,#2b8b35);
 justify-content:center;
 align-items:center;
 font-size:70px;
 color:white;
 }
-</style>
-</head>
 
+</style>
+
+</head>
 <body>
 
 <div id="loading">
 
-<div class="logo">🦅 WildEvo</div>
+<div id="particles"></div>
 
-<div class="status" id="status">
+<div class="logo">
+🦅 WildEvo
+</div>
+
+<div class="loadingText" id="status">
 Initializing...
 </div>
 
@@ -126,7 +141,9 @@ Initializing...
 <div class="progress" id="progress"></div>
 </div>
 
-<div class="percent" id="percent">0%</div>
+<div class="percent" id="percent">
+0%
+</div>
 
 </div>
 
@@ -136,44 +153,66 @@ Initializing...
 
 <script>
 
-let p=0;
+const particles=document.getElementById("particles");
 
-const texts=[
-"Loading textures...",
-"Generating world...",
-"Loading animals...",
-"Connecting server...",
-"Preparing adventure..."
-];
+for(let i=0;i<120;i++){
 
-const bar=document.getElementById("progress");
-const percent=document.getElementById("percent");
+let p=document.createElement("div");
+
+p.className="particle";
+
+p.style.left=Math.random()*100+"%";
+
+p.style.animationDuration=(5+Math.random()*8)+"s";
+
+p.style.animationDelay=Math.random()*5+"s";
+
+particles.appendChild(p);
+
+}
+
 const status=document.getElementById("status");
 
-let i=0;
+const percent=document.getElementById("percent");
 
-const load=setInterval(()=>{
+const progress=document.getElementById("progress");
 
-p++;
+const text=[
+"Loading textures...",
+"Loading world...",
+"Loading animals...",
+"Preparing map...",
+"Connecting...",
+"Almost done..."
+];
 
-bar.style.width=p+"%";
-percent.innerHTML=p+"%";
+let value=0;
 
-if(p==20){status.innerHTML=texts[1];}
-if(p==40){status.innerHTML=texts[2];}
-if(p==60){status.innerHTML=texts[3];}
-if(p==80){status.innerHTML=texts[4];}
+let timer=setInterval(()=>{
 
-if(p>=100){
+value++;
 
-clearInterval(load);
+progress.style.width=value+"%";
+
+percent.innerHTML=value+"%";
+
+if(value==15)status.innerHTML=text[1];
+if(value==35)status.innerHTML=text[2];
+if(value==55)status.innerHTML=text[3];
+if(value==75)status.innerHTML=text[4];
+if(value==90)status.innerHTML=text[5];
+
+if(value>=100){
+
+clearInterval(timer);
 
 setTimeout(()=>{
 
 document.getElementById("loading").style.display="none";
+
 document.getElementById("menu").style.display="flex";
 
-},200);
+},300);
 
 }
 
