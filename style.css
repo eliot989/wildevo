@@ -1,21 +1,18 @@
 body {
 margin: 0;
 font-family: Arial;
-background: #0b0f14;
+background: black;
 color: white;
 overflow: hidden;
 }
 
 /* LOADING */
 #loadingScreen {
-position: absolute;
-width: 100%;
-height: 100%;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background: black;
+height: 100vh;
 }
 
 .logo {
@@ -23,31 +20,57 @@ font-size: 40px;
 margin-bottom: 20px;
 }
 
+/* BAR */
 .bar {
 width: 300px;
-height: 20px;
-background: #333;
+height: 25px;
+background: #222;
 border-radius: 10px;
+position: relative;
 overflow: hidden;
+box-shadow: 0 0 20px lime;
 }
 
 #fill {
 height: 100%;
 width: 0%;
 background: lime;
+box-shadow: 0 0 15px lime;
+transition: 0.2s;
 }
 
 #percent {
-margin-top: 10px;
+position: absolute;
+width: 100%;
+text-align: center;
+top: 3px;
+font-size: 14px;
 }
 
-/* LOBBY */
+/* PLAY BUTTON */
+#playBtn {
+margin-top: 20px;
+padding: 10px 30px;
+font-size: 20px;
+background: lime;
+border: none;
+cursor: pointer;
+box-shadow: 0 0 20px lime;
+}
+
 .hidden {
 display: none;
 }
 
-/* TOP LEFT */
-.top-left {
+/* LOBBY */
+#lobby {
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.topLeft {
 position: absolute;
 top: 10px;
 left: 10px;
@@ -56,131 +79,10 @@ padding: 10px;
 border-radius: 10px;
 }
 
-/* XP BAR */
-.xp-bar {
-width: 200px;
-height: 20px;
-background: #222;
-margin-top: 5px;
-position: relative;
-}
-
-#xpFill {
-height: 100%;
-width: 0%;
-background: lime;
-}
-
-#xpText {
-position: absolute;
-width: 100%;
-text-align: center;
-font-size: 12px;
-}
-
-/* USERNAME */
-.username {
-position: absolute;
-bottom: 20px;
-left: 20px;
-}
-
-.username input {
-padding: 5px;
-background: black;
-color: white;
-border: 1px solid white;
-}
-
-/* PLAY */
-.center {
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%,-50%);
-}
-
 .center button {
-padding: 20px 60px;
+padding: 20px 50px;
 font-size: 30px;
 background: lime;
 border: none;
 cursor: pointer;
-}
-
-/* MENU */
-.menu-right {
-position: absolute;
-right: 10px;
-top: 150px;
-display: flex;
-flex-direction: column;
-gap: 10px;
-}
-
-/* TASKS */
-.tasks {
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%,-50%);
-background: rgba(0,0,0,0.9);
-padding: 20px;
-}
-
-.tasks button {
-display: block;
-margin: 10px 0;
-}
-⚙️ 3. script.js
-let progress = 0;
-let xp = 0;
-let level = 0;
-
-/* LOADING */
-const fill = document.getElementById("fill");
-const percent = document.getElementById("percent");
-
-let loading = setInterval(() => {
-progress++;
-
-fill.style.width = progress + "%";
-percent.innerText = progress + "%";
-
-if (progress >= 100) {
-clearInterval(loading);
-
-setTimeout(() => {
-document.getElementById("loadingScreen").style.display = "none";
-document.getElementById("lobby").classList.remove("hidden");
-}, 500);
-}
-
-}, 30);
-
-/* XP SYSTEM */
-function updateXP(amount) {
-xp += amount;
-
-if (xp >= 100) {
-level++;
-xp = 0;
-document.getElementById("level").innerText = level;
-}
-
-document.getElementById("xpFill").style.width = xp + "%";
-document.getElementById("xpText").innerText = xp + "/100";
-}
-
-/* TASKS */
-function completeTask(xpReward) {
-updateXP(xpReward);
-}
-
-function openTasks() {
-document.getElementById("tasks").classList.remove("hidden");
-}
-
-function closeTasks() {
-document.getElementById("tasks").classList.add("hidden");
 }
