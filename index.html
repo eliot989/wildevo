@@ -75,42 +75,48 @@
     
 let progress = 0;
 
-window.onload = function () {
-
 const fill = document.getElementById("fill");
 const percent = document.getElementById("percent");
+const loadingBar = document.getElementById("loadingBar");
+const background = document.getElementById("background");
 const lobby = document.getElementById("lobby");
 
-if (!fill || !percent || !lobby) {
-console.log("Missing elements!");
-return;
-}
+function startLoading() {
 
 let loading = setInterval(() => {
 
 progress++;
 
 fill.style.width = progress + "%";
-percent.innerHTML = progress + "%";
+percent.innerText = progress + "%";
 
 if (progress >= 100) {
 
 clearInterval(loading);
 
-// schimbă doar text
-percent.innerHTML = "PLAY";
+percent.innerText = "PLAY";
 
-document.getElementById("loadingBar").style.display = "none";
-document.getElementById("background").style.display = "none";
+loadingBar.style.cursor = "pointer";
 
-const lobby = document.getElementById("lobby");
+loadingBar.onclick = function () {
+
+// ascunde loading COMPLET
+loadingBar.style.display = "none";
+background.style.display = "none";
+
+// arată lobby CURAT
 lobby.style.display = "block";
-lobby.style.zIndex = "999";
+lobby.style.background = "url('assets/lobby.png') center/cover no-repeat";
 
 };
 
 }
 
+}, 30);
+
+}
+
+window.onload = startLoading;
 }, 30);
 
 };
