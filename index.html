@@ -2,43 +2,26 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WildEvo</title>
-
+    <title>EvoGame</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="background"></div>
+<div id="menu">
+    <h1>EvoGame</h1>
 
-<div id="loadingBar">
-    <div id="fill"></div>
-    <div id="percent">0%</div>
+    <input type="text" id="nickname" placeholder="Numele tău">
+
+    <button id="play">JOACĂ</button>
+
+    <button>SETĂRI</button>
+
+    <button>SKINURI</button>
 </div>
 
-<script>
-let percent = 0;
+<canvas id="game"></canvas>
 
-const fill = document.getElementById("fill");
-const text = document.getElementById("percent");
-
-const loading = setInterval(() => {
-
-    percent++;
-
-    fill.style.width = percent + "%";
-    text.innerHTML = percent + "%";
-
-    if(percent >= 100){
-        clearInterval(loading);
-
-        setTimeout(()=>{
-            window.location.href="game.html";
-        },500);
-    }
-
-},50);
-</script>
+<script src="game.js"></script>
 
 </body>
 </html>
