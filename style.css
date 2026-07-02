@@ -1,9 +1,49 @@
 body {
 margin: 0;
-background: #0b0f14;
 font-family: Arial;
+background: #0b0f14;
 color: white;
 overflow: hidden;
+}
+
+/* LOADING */
+#loadingScreen {
+position: absolute;
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background: black;
+}
+
+.logo {
+font-size: 40px;
+margin-bottom: 20px;
+}
+
+.bar {
+width: 300px;
+height: 20px;
+background: #333;
+border-radius: 10px;
+overflow: hidden;
+}
+
+#fill {
+height: 100%;
+width: 0%;
+background: lime;
+}
+
+#percent {
+margin-top: 10px;
+}
+
+/* LOBBY */
+.hidden {
+display: none;
 }
 
 /* TOP LEFT */
@@ -20,17 +60,15 @@ border-radius: 10px;
 .xp-bar {
 width: 200px;
 height: 20px;
-background: #333;
+background: #222;
 margin-top: 5px;
 position: relative;
-border-radius: 10px;
 }
 
 #xpFill {
 height: 100%;
 width: 0%;
 background: lime;
-border-radius: 10px;
 }
 
 #xpText {
@@ -38,24 +76,23 @@ position: absolute;
 width: 100%;
 text-align: center;
 font-size: 12px;
-top: 2px;
 }
 
 /* USERNAME */
-.username-box {
+.username {
 position: absolute;
 bottom: 20px;
 left: 20px;
 }
 
-.username-box input {
+.username input {
 padding: 5px;
 background: black;
 color: white;
 border: 1px solid white;
 }
 
-/* CENTER PLAY */
+/* PLAY */
 .center {
 position: absolute;
 top: 50%;
@@ -72,24 +109,13 @@ cursor: pointer;
 }
 
 /* MENU */
-.menu-left {
-position: absolute;
-left: 10px;
-top: 200px;
-}
-
 .menu-right {
 position: absolute;
 right: 10px;
-top: 200px;
+top: 150px;
 display: flex;
 flex-direction: column;
 gap: 10px;
-}
-
-button {
-padding: 10px;
-cursor: pointer;
 }
 
 /* TASKS */
@@ -100,9 +126,61 @@ left: 50%;
 transform: translate(-50%,-50%);
 background: rgba(0,0,0,0.9);
 padding: 20px;
-border-radius: 10px;
 }
 
-.hidden {
-display: none;
+.tasks button {
+display: block;
+margin: 10px 0;
+}
+⚙️ 3. script.js
+let progress = 0;
+let xp = 0;
+let level = 0;
+
+/* LOADING */
+const fill = document.getElementById("fill");
+const percent = document.getElementById("percent");
+
+let loading = setInterval(() => {
+progress++;
+
+fill.style.width = progress + "%";
+percent.innerText = progress + "%";
+
+if (progress >= 100) {
+clearInterval(loading);
+
+setTimeout(() => {
+document.getElementById("loadingScreen").style.display = "none";
+document.getElementById("lobby").classList.remove("hidden");
+}, 500);
+}
+
+}, 30);
+
+/* XP SYSTEM */
+function updateXP(amount) {
+xp += amount;
+
+if (xp >= 100) {
+level++;
+xp = 0;
+document.getElementById("level").innerText = level;
+}
+
+document.getElementById("xpFill").style.width = xp + "%";
+document.getElementById("xpText").innerText = xp + "/100";
+}
+
+/* TASKS */
+function completeTask(xpReward) {
+updateXP(xpReward);
+}
+
+function openTasks() {
+document.getElementById("tasks").classList.remove("hidden");
+}
+
+function closeTasks() {
+document.getElementById("tasks").classList.add("hidden");
 }
