@@ -10,7 +10,6 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial;
 }
 
 body{
@@ -18,27 +17,20 @@ overflow:hidden;
 background:black;
 }
 
-/* IMAGINEA TA CA FUNDAL */
+/* IMAGINEA TA */
 #bg{
 position:fixed;
 width:100%;
 height:100%;
-background:url("file_00000000cb24720a8025a4563a5f3adb") center/cover no-repeat;
+background:url("assets/loading.png") center/cover no-repeat;
 }
 
-/* DARK OVERLAY */
+/* OVERLAY NEGRU (ca să arate mai cool textul) */
 #overlay{
 position:fixed;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.45);
-}
-
-/* UI */
-#ui{
-position:absolute;
-width:100%;
-height:100%;
+background:rgba(0,0,0,0.4);
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -46,20 +38,21 @@ align-items:center;
 color:white;
 }
 
-.logo{
+/* LOGO */
+h1{
 font-size:80px;
-font-weight:bold;
 text-shadow:0 0 20px #00ff66;
 }
 
+/* BAR */
 .bar{
-margin-top:40px;
-width:520px;
-height:22px;
+width:500px;
+height:20px;
 background:#111;
 border:2px solid #333;
-border-radius:30px;
+border-radius:20px;
 overflow:hidden;
+margin-top:40px;
 }
 
 .progress{
@@ -68,73 +61,47 @@ width:0%;
 background:#00ff66;
 }
 
-.percent{
+/* PERCENT */
+#percent{
 margin-top:15px;
 font-size:25px;
 color:#00ff66;
-}
-
-/* MENU */
-#menu{
-display:none;
-width:100%;
-height:100%;
-justify-content:center;
-align-items:center;
-font-size:60px;
-color:white;
-background:black;
 }
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND IMAGE -->
 <div id="bg"></div>
-<div id="overlay"></div>
 
-<!-- LOADING UI -->
-<div id="ui">
+<div id="overlay">
 
-<div class="logo">🦅 WILDEVO</div>
+<h1>🦅 WILD EVO</h1>
 
 <div class="bar">
 <div class="progress" id="bar"></div>
 </div>
 
-<div class="percent" id="percent">0%</div>
+<div id="percent">0%</div>
 
-</div>
-
-<!-- MENU -->
-<div id="menu">
-🔥 PLAY WILDEVO 🔥
 </div>
 
 <script>
 
-let p=0;
-let bar=document.getElementById("bar");
-let percent=document.getElementById("percent");
+let p = 0;
 
-let load=setInterval(()=>{
+let bar = document.getElementById("bar");
+let percent = document.getElementById("percent");
+
+let load = setInterval(()=>{
 
 p++;
-bar.style.width=p+"%";
-percent.innerHTML=p+"%";
+bar.style.width = p + "%";
+percent.innerHTML = p + "%";
 
-if(p>=100){
+if(p >= 100){
 clearInterval(load);
-
-setTimeout(()=>{
-
-document.getElementById("ui").style.display="none";
-document.getElementById("bg").style.display="none";
-document.getElementById("overlay").style.display="none";
-document.getElementById("menu").style.display="flex";
-
-},300);
+document.getElementById("overlay").innerHTML = "🔥 START GAME 🔥";
 }
 
 },50);
